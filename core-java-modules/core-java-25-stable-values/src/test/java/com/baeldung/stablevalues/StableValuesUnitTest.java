@@ -10,7 +10,7 @@ import java.util.function.Function;
 
 import org.junit.jupiter.api.BeforeEach
 
-public class StableValuesUnitTest {
+class StableValuesUnitTest {
 
     private Set<String> cities;
 
