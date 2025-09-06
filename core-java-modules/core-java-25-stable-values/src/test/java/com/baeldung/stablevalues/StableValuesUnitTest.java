@@ -30,7 +30,7 @@ class StableValuesUnitTest {
     }
 
     @Test
-    void givenStableFunctionForCityToCountry_thenVerifyFunctionResultsAreExpected() {
+    void givenStableFunctionForCityToCountry_whenValidInputsUsed_thenVerifyFunctionResultsAreExpected() {
         final Function<String, String> cityToCountry = StableValue.function(cities, city -> expensiveMethodToDetermineCountry(city));
         assertThat(cityToCountry.apply("Paris")).isEqualTo("France");
         assertThat(cityToCountry.apply("London")).isEqualTo("England");
