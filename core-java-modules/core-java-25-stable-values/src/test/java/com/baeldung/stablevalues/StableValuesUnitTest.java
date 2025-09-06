@@ -32,9 +32,9 @@ class StableValuesUnitTest {
     @Test
     void givenStableFunctionForCityToCountry_whenValidInputsUsed_thenVerifyFunctionResultsAreExpected() {
         final Function<String, String> cityToCountry = StableValue.function(cities, city -> expensiveMethodToDetermineCountry(city));
-        assertThat(cityToCountry.apply("Paris")).isEqualTo("France");
         assertThat(cityToCountry.apply("London")).isEqualTo("England");
         assertThat(cityToCountry.apply("Madrid")).isEqualTo("Spain");
+        assertThat(cityToCountry.apply("Paris")).isEqualTo("France");
     }
 
     @Test
@@ -62,9 +62,10 @@ class StableValuesUnitTest {
     @Test
     void givenStableMapForCityToCountry_thenVerifyValuesAreExpected() {
         final Map<String, String> cityToCountry = StableValue.map(cities, city -> expensiveMethodToDetermineCountry(city));
-        assertThat(cityToCountry.get("Paris")).isEqualTo("France");
+        assertThat(cityToCountry.get("Berlin")).isEqualTo("Germany");
         assertThat(cityToCountry.get("London")).isEqualTo("England");
         assertThat(cityToCountry.get("Madrid")).isEqualTo("Spain");
+        assertThat(cityToCountry.get("Paris")).isEqualTo("France");
     }
 
     @BeforeEach
