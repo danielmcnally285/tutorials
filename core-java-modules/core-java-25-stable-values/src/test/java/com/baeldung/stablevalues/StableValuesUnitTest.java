@@ -16,19 +16,21 @@ class StableValuesUnitTest {
 
     private String expensiveMethodToDetermineCountry(String city) {
         switch(city) {
-        case "Paris":
-            return "France";
+        case "Berlin":
+            return "Germany";
         case "London":
             return "England";
         case "Madrid":
-            return "Spain";
+            return "Spain";        
+        case "Paris":
+            return "France";
         default:
             throw new RuntimeException("Unsupported city");
         }
     }
 
     @Test
-    void givenStableFunctionForCityToCountry_thenVerifyElementsAreExpected() {
+    void givenStableFunctionForCityToCountry_thenVerifyFunctionResultsAreExpected() {
         final Function<String, String> cityToCountry = StableValue.function(cities, city -> expensiveMethodToDetermineCountry(city));
         assertThat(cityToCountry.apply("Paris")).isEqualTo("France");
         assertThat(cityToCountry.apply("London")).isEqualTo("England");
@@ -58,7 +60,7 @@ class StableValuesUnitTest {
     }
 
     @Test
-    void givenStableMapForCityToCountry_thenVerifyElementsAreExpected() {
+    void givenStableMapForCityToCountry_thenVerifyValuesAreExpected() {
         final Map<String, String> cityToCountry = StableValue.map(cities, city -> expensiveMethodToDetermineCountry(city));
         assertThat(cityToCountry.get("Paris")).isEqualTo("France");
         assertThat(cityToCountry.get("London")).isEqualTo("England");
