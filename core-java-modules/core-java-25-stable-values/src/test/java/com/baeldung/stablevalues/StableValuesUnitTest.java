@@ -32,6 +32,7 @@ class StableValuesUnitTest {
     @Test
     void givenStableFunctionForCityToCountry_whenValidInputsUsed_thenVerifyFunctionResultsAreExpected() {
         final Function<String, String> cityToCountry = StableValue.function(cities, city -> expensiveMethodToDetermineCountry(city));
+        
         assertThat(cityToCountry.apply("London")).isEqualTo("England");
         assertThat(cityToCountry.apply("Madrid")).isEqualTo("Spain");
         assertThat(cityToCountry.apply("Paris")).isEqualTo("France");
@@ -40,12 +41,14 @@ class StableValuesUnitTest {
     @Test
     void givenStableFunctionForCityToCountry_whenInvalidInputUsed_thenExceptionThrown() {
         final Function<String, String> cityToCountry = StableValue.function(cities, city -> expensiveMethodToDetermineCountry(city));
+        
         assertThatIllegalArgumentException().isThrownBy(() -> cityToCountry.apply("Berlin"));
     }
 
     @Test
     void givenStableListForFiveTimesTable_thenVerifyElementsAreExpected() {
         final List<Integer> fiveTimesTable = StableValue.list(11, index -> index * 5);
+        
         assertThat(fiveTimesTable.get(0)).isEqualTo(0);
         assertThat(fiveTimesTable.get(1)).isEqualTo(5);
         assertThat(fiveTimesTable.get(2)).isEqualTo(10);
@@ -62,6 +65,7 @@ class StableValuesUnitTest {
     @Test
     void givenStableMapForCityToCountry_thenVerifyValuesAreExpected() {
         final Map<String, String> cityToCountry = StableValue.map(cities, city -> expensiveMethodToDetermineCountry(city));
+        
         assertThat(cityToCountry.get("London")).isEqualTo("England");
         assertThat(cityToCountry.get("Madrid")).isEqualTo("Spain");
         assertThat(cityToCountry.get("Paris")).isEqualTo("France");
