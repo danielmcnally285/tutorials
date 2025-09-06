@@ -69,6 +69,6 @@ class StableValuesUnitTest {
 
     @BeforeEach
     void init() {
-        cities = Set.of("Paris", "London", "Madrid");
+        cities = Set.of("London", "Madrid", "Paris");
     }
 }
