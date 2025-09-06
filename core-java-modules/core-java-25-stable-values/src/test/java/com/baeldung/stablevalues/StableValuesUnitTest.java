@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach
 
 class StableValuesUnitTest {
 
-    private List<String> cities;
+    private Set<String> cities;
 
     private String expensiveMethodToDetermineCountry(String city) {
         switch(city) {
@@ -69,6 +69,6 @@ class StableValuesUnitTest {
 
     @BeforeEach
     void init() {
-        cities = List.of("Paris", "London", "Madrid");
+        cities = Set.of("Paris", "London", "Madrid");
     }
 }
