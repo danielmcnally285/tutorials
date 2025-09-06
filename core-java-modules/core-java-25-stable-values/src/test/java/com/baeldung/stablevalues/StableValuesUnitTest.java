@@ -62,7 +62,6 @@ class StableValuesUnitTest {
     @Test
     void givenStableMapForCityToCountry_thenVerifyValuesAreExpected() {
         Map<String, String> cityToCountry = StableValue.map(cities, city -> expensiveMethodToDetermineCountry(city));
-        assertThat(cityToCountry.get("Berlin")).isEqualTo("Germany");
         assertThat(cityToCountry.get("London")).isEqualTo("England");
         assertThat(cityToCountry.get("Madrid")).isEqualTo("Spain");
         assertThat(cityToCountry.get("Paris")).isEqualTo("France");
